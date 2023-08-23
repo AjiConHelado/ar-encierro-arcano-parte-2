@@ -10,7 +10,7 @@ public class LevitationController : MonoBehaviour
     private bool isLevitating = false;
     private Vector3 originalPosition;
     private Vector3 targetPosition;
-
+    public GameObject[] quills ;
     private void Start()
     {
         originalPosition = transform.position;
@@ -19,22 +19,16 @@ public class LevitationController : MonoBehaviour
 
     private void Update()
     {
-        if (isLevitating)
-        {
-           
-            transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * levitationSpeed);
-        }
-        else
-        {
-           
-            transform.position = Vector3.Lerp(transform.position, originalPosition, Time.deltaTime * levitationSpeed);
-        }
+      
     }
     public void OnMouseDown()
     {
-
-        isLevitating = true;
-
+        foreach ( GameObject quill in quills)
+        {
+            quill.GetComponent<candle>().numero = 1;
+        }
+      
+      
     }
     
 }

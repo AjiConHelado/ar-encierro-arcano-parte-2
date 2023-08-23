@@ -11,39 +11,46 @@ public class MovQuill : MonoBehaviour
     private Vector3 originalPosition;
     private Vector3 targetPosition;
     private float signingStartTime;
+    
 
-    private void Start()
+ 
+      [SerializeField]
+    [Range(0, 10)]
+    float period = 1;
+
+    [SerializeField]
+    [Range(0, 10)]
+    private float amplitude = 0.2f;
+    public int numero = 0;
+    public int numero2 = 1;
+    void Update()
     {
-        originalPosition = transform.position;
-        targetPosition = originalPosition + Vector3.up * 0.5f; // Cambia la altura a tu preferencia
-    }
-
-    private void Update()
-    {
-        if (isLevitating)
+        if (numero == 0)
         {
-            float timeSinceSigningStart = Time.time - signingStartTime;
-            float t = Mathf.Clamp01(timeSinceSigningStart / signingDuration);
-
-            // Usa la curva de animación para calcular la posición
-            Vector3 newPos = Vector3.Lerp(originalPosition, targetPosition, signingCurve.Evaluate(t));
-            transform.position = newPos;
-
-            if (t >= 1.0f)
-            {
-                isLevitating = false;
-            }
+            return;
         }
-        else
+        // Simple harmonic movement on x component
+        float factor = Time.time / period;
+        float x = amplitude * Mathf.Sin(factor);
+        x = x * 0.0001f;
+        // Update the position
+        if(numero2==0)
         {
-            // Regresar a la posición inicial
-            transform.position = Vector3.Lerp(transform.position, originalPosition, Time.deltaTime);
+            return;
         }
+        transform.position = new Vector3(transform.position.x+x*3f, transform.position.y, transform.position.z + x);
+        //transform.position.Draw(Color.yellow);
     }
 
     private void OnMouseDown()
     {
-        isLevitating = true;
-        signingStartTime = Time.time;
+        numero = 1;
     }
-}
+   
+        void OnCollisionEnter(Collision collision)
+    
+        {
+        Debug.Log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        numero2 = 0;
+        }
+    }
