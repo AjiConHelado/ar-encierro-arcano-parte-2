@@ -34,10 +34,7 @@ public class MovQuill : MonoBehaviour
         float x = amplitude * Mathf.Sin(factor);
         x = x * 0.0001f;
         // Update the position
-        if(numero2==0)
-        {
-            return;
-        }
+       
         transform.position = new Vector3(transform.position.x+x*3f, transform.position.y, transform.position.z + x);
         //transform.position.Draw(Color.yellow);
     }
@@ -47,10 +44,5 @@ public class MovQuill : MonoBehaviour
         numero = 1;
     }
    
-        void OnCollisionEnter(Collision collision)
-    
-        {
-        Debug.Log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-        numero2 = 0;
-        }
+      
     }

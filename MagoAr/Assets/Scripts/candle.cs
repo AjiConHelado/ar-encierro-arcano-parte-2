@@ -12,6 +12,7 @@ public class candle : MonoBehaviour
     [Range(0, 10)]
     private float amplitude = 0.2f;
     public int numero=0;
+    
     void Update()
     {
         if (numero == 0)
@@ -23,7 +24,12 @@ public class candle : MonoBehaviour
         float x = amplitude * Mathf.Sin( factor);
         x = x * 0.0001f;
         // Update the position
-        transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z+x);
+        transform.position = new Vector3(transform.position.x, transform.position.y + x * 4f, transform.position.z);
         //transform.position.Draw(Color.yellow);
+    }
+    public void OnMouseDown()
+    {
+        numero = 1;
+
     }
 }
