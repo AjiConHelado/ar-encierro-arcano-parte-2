@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/ar poster.unity
-    guid: 7ff3762c3e89f2b47b2e31c82a171f90
+    path: Assets/Scenes/ground object.unity
+    guid: 3932a286a4f5b124fafadc8be9016ed8
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 35d735cd86cd5214ba2759675b5c865b,
       type: 2}
